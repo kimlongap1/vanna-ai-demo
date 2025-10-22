@@ -1,15 +1,10 @@
 # Quick Start Guide
 
-## 🚀 Get Started in 5 Minutes
+## 🚀 Get Started in 3 Steps
 
-### 1. Setup Environment
+### 1. Install Dependencies
 ```bash
-# Run the setup script
-./setup.sh
-
-# Edit your API key
-cp env.example .env
-# Add your Google Gemini API key to .env
+pip install -r requirements.txt
 ```
 
 ### 2. Start PostgreSQL
@@ -19,43 +14,44 @@ cd docker
 # Wait for "Database is ready!" message
 ```
 
-### 3. Launch Demo
+### 3. Open the Notebook
 ```bash
-# Start Jupyter
-jupyter notebook notebooks/
-
-# Open vanna-ai-demo.ipynb
-# Run all cells to see the magic! ✨
+jupyter notebook notebooks/vanna-ai-demo.ipynb
 ```
 
-### 4. Web Interface
-```python
-# In the notebook, run the Flask app cell
-from vanna.flask import VannaFlaskApp
-app = VannaFlaskApp(vn, allow_llm_to_see_data=True)
-app.run()
-
-# Visit http://localhost:8084
-```
+**That's it!** The notebook has everything configured:
+- ✅ API keys built-in
+- ✅ Database settings ready
+- ✅ Just run the cells in order
 
 ## 📊 Sample Questions to Try
 
+### Stocks Dataset (Default)
+- "What's the average price of GOOGL?"
+- "Show me the highest volume trading days"
+- "Which stocks had the biggest price swings?"
+
 ### Movies Dataset
+To switch to movies data:
+```bash
+python3 switch_dataset.py movies
+```
+
+Then try:
 - "What are the top 10 highest rated movies?"
 - "Show me movies released in 2020"
 - "Which movies have the highest vote count?"
 
-### Stocks Dataset  
-- "What's the average price of AAPL?"
-- "Show me the highest volume trading days"
-- "Which stocks had the biggest price swings?"
+## 🌐 Web Interface
+
+In the notebook, run the Flask app cell to get the web interface at http://localhost:8084
 
 ## 🔧 Troubleshooting
 
 ### Common Issues
-1. **API Key Error**: Make sure GEMINI_API_KEY is set in .env
-2. **Database Connection**: Ensure PostgreSQL is running (`cd docker && ./run.sh`)
-3. **Module Errors**: Run `pip install -r requirements.txt`
+1. **Database Connection**: Ensure PostgreSQL is running (`cd docker && ./run.sh`)
+2. **Module Errors**: Run `pip install -r requirements.txt`
+3. **Port Conflicts**: If port 5433 is busy, the Docker container will fail to start
 
 ### Need Help?
 - Check the full README.md
