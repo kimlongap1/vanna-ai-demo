@@ -165,13 +165,82 @@ vanna-ai-demo/
 ```
 
 
+## 🛠️ Tech Stack
+
+This demo showcases a specific tech stack, but Vanna AI supports many alternatives:
+
+### Current Implementation
+
+| Component | Technology | Purpose |
+|-----------|------------|---------|
+| **LLM** | Google Gemini Pro | AI-powered SQL generation |
+| **Database** | PostgreSQL | Sample data storage and query execution |
+| **Vector Store** | ChromaDB | Training data storage and retrieval |
+| **Web Interface** | Flask | Interactive demo interface |
+| **Containerization** | Docker | Easy database setup |
+
+### Vanna AI Flexibility
+
+**🤖 Supported LLMs:**
+- Google Gemini (used in this demo)
+- OpenAI GPT-3.5/4
+- Anthropic Claude
+- Azure OpenAI
+- Cohere
+- Ollama (local models)
+- And many more...
+
+**🗄️ Supported Databases:**
+- PostgreSQL (used in this demo)
+- MySQL
+- SQL Server
+- BigQuery
+- Snowflake
+- SQLite
+- Oracle
+- And many more...
+
+**📊 Supported Vector Stores:**
+- ChromaDB (used in this demo)
+- Pinecone
+- Weaviate
+- Qdrant
+- Milvus
+- FAISS
+- And many more...
+
+### Why This Stack?
+
+**Google Gemini**: Excellent SQL generation capabilities with competitive pricing
+**PostgreSQL**: Robust, feature-rich database with excellent SQL support
+**ChromaDB**: Lightweight, local vector store perfect for demos
+**Docker**: Ensures consistent setup across different environments
+
+### Customizing Your Stack
+
+To use different components, simply modify the notebook configuration:
+
+```python
+# Example: Switch to OpenAI
+from vanna.openai import OpenAI_Chat
+vn = OpenAI_Chat(api_key="your-openai-key")
+
+# Example: Switch to MySQL
+vn.connect_to_mysql(host='localhost', user='root', password='password', database='mydb')
+
+# Example: Switch to Pinecone
+from vanna.pinecone import Pinecone_VectorStore
+vn = Pinecone_VectorStore(api_key="your-pinecone-key")
+```
+
 ## 🎮 How It Works
 
 1. **Database Connection**: Connects to PostgreSQL with sample data
 2. **Schema Learning**: AI analyzes your database structure
 3. **Training**: Learns from DDL statements and examples
-4. **Query Generation**: Converts natural language to SQL
+4. **Query Generation**: Converts natural language to SQL using Gemini
 5. **Execution**: Runs queries and returns results
+6. **Vector Storage**: Stores training data in ChromaDB for future reference
 
 ## 🧠 Training Vanna AI
 
