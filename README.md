@@ -2,6 +2,9 @@
 
 A simple demonstration of [Vanna AI](https://vanna.ai/) - AI-powered SQL generation using Google Gemini, PostgreSQL, and ChromaDB.
 
+
+![](assets/20251022_145000_how-vanna-works.gif)
+
 ## 🚀 Quick Start
 
 ### Prerequisites
@@ -240,9 +243,6 @@ This demo showcases a specific tech stack, but Vanna AI supports many alternativ
 | **Vector Store**     | ChromaDB          | Training data storage and retrieval     |
 | **Web Interface**    | Flask             | Interactive demo interface              |
 | **Containerization** | Docker            | Easy database setup                     |
-
-
-
 
 ![](assets/20251022_142000_data-02.png)
 
