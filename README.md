@@ -152,7 +152,22 @@ After running the notebook, you can also use the web interface:
    - Run the cells in order again
    - The ChromaDB data will be stored in `./chromadb_data/`
 
-2. **Port 5433 already in use**
+2. **ResourceExhausted Error**
+   ```
+   ResourceExhausted: API quota exceeded or rate limit reached
+   ```
+   **Solution**: This happens when hitting Gemini API limits. The notebook now includes:
+   - Error handling for training steps
+   - Rate limiting between API calls
+   - Helpful error messages
+   
+   **If you still get this error:**
+   - Wait a few minutes and try again
+   - Check your Google AI Studio quota
+   - Consider using a different API key
+   - Reduce the number of training examples
+
+3. **Port 5433 already in use**
    ```bash
    # Stop any existing PostgreSQL containers
    docker stop $(docker ps -q --filter ancestor=postgres)
