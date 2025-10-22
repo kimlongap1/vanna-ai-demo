@@ -2,6 +2,32 @@
 
 A comprehensive demonstration of [Vanna AI](https://vanna.ai/) - an AI-powered SQL generation tool using Google Gemini, PostgreSQL, and ChromaDB.
 
+## 🚀 Quick Start
+
+**Simple! No .env files needed - all configuration is directly in the notebook:**
+
+```bash
+# 1. Install dependencies
+pip install -r requirements.txt
+
+# 2. Start PostgreSQL
+cd docker && ./run.sh
+
+# 3. Open the notebook
+jupyter notebook notebooks/vanna-ai-demo.ipynb
+```
+
+**That's it!** The notebook has all configuration built-in:
+- ✅ API keys directly in the code
+- ✅ Database settings pre-configured  
+- ✅ No environment variables needed
+- ✅ Just open and run!
+
+**Alternative: Use the Python script** for automated testing:
+```bash
+python3 vanna_demo_simple.py
+```
+
 ## 🚀 Features
 
 - **AI-Powered SQL Generation**: Generate SQL queries from natural language using Google Gemini
