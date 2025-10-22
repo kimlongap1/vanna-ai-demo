@@ -33,6 +33,9 @@ pip3 install -r requirements.txt
 # Navigate to docker directory
 cd docker
 
+# Copy the environment example file to `.env`
+cp env.example .env
+
 # Build and start PostgreSQL with sample data
 ./run.sh
 
@@ -65,7 +68,6 @@ jupyter lab notebooks/vanna-ai-demo.ipynb
   - Click "Run All" or run cells with Shift+Enter
   - Open http://localhost:8084
   - **Try sample questions** like "hat is the average closing price for each stock, ordered from highest to lowest"
-
 
     ![](assets/20251022_150317_data-04.png)
 
@@ -117,117 +119,7 @@ Then try:
 - "Which movies have the highest vote count?"
 - "Find action movies with ratings above 8.0"
 
-## 🔄 Switch Datasets
-
-The project includes two sample datasets. Switch between them easily:
-
-```bash
-# Switch to movies dataset
-python3 switch_dataset.py movies
-
-# Switch back to stocks dataset  
-python3 switch_dataset.py stocks
-
-# Check current dataset
-python3 switch_dataset.py status
-```
-
-**Note**: Switching datasets will rebuild the Docker container with new data.
-
-## 🌐 Web Interface
-
-After running the notebook, you can also use the web interface:
-
-1. **Run the Flask app cell** in the notebook
-2. **Visit** http://localhost:8084
-3. **Ask questions** in the web interface
-4. **View generated SQL** and results
-
-## 🔧 Troubleshooting
-
-### Common Issues
-
-1. **ChromaDB OperationalError**
-
-   ```
-   OperationalError: Failed to connect to ChromaDB server
-   ```
-
-   **Solution**: The notebook is now configured to use a local ChromaDB instance. If you still get this error:
-
-   - Restart the Jupyter kernel
-   - Run the cells in order again
-   - The ChromaDB data will be stored in `./chromadb_data/`
-2. **ResourceExhausted Error**
-
-   ```
-   ResourceExhausted: API quota exceeded or rate limit reached
-   ```
-
-   **Solution**: This happens when hitting Gemini API limits. The notebook now includes:
-
-   - Error handling for training steps
-   - Rate limiting between API calls
-   - Helpful error messages
-
-   **If you still get this error:**
-
-   - Wait a few minutes and try again
-   - Check your Google AI Studio quota
-   - Consider using a different API key
-   - Reduce the number of training examples
-3. **Port 5433 already in use**
-
-   ```bash
-   # Stop any existing PostgreSQL containers
-   docker stop $(docker ps -q --filter ancestor=postgres)
-   ```
-4. **Module not found errors**
-
-   ```bash
-   # Reinstall dependencies
-   pip3 install -r requirements.txt
-   ```
-5. **Database connection failed**
-
-   ```bash
-   # Check if Docker is running
-   docker ps
-
-   # Restart the database
-   cd docker && ./run.sh
-   ```
-6. **ChromaDB telemetry warnings**
-
-   - These are harmless and don't affect functionality
-   - They're automatically suppressed in the notebook
-
-### Getting Help
-
-- Check the [Vanna AI Documentation](https://vanna.ai/docs/)
-- Review the troubleshooting section in the notebook
-- Open an issue in this repository
-
-## 📁 Project Structure
-
-```
-vanna-ai-demo/
-├── notebooks/
-│   └── vanna-ai-demo.ipynb    # Main demo notebook
-├── docker/                     # PostgreSQL setup
-│   ├── movies/                # Movies dataset
-│   ├── stocks/                # Stocks dataset
-│   └── *.sh                   # Setup scripts
-├── data/                       # Sample datasets
-├── docs/                       # Documentation
-├── img/                        # Images and media for README
-├── README.md                   # This file
-├── QUICKSTART.md              # Quick start guide
-├── requirements.txt           # Python dependencies
-└── switch_dataset.py          # Dataset switcher
-```
-
-## 🛠️ Tech Stack
+ 🛠️ Tech Stack
 
 This demo showcases a specific tech stack, but Vanna AI supports many alternatives:
 
