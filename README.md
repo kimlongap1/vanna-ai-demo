@@ -39,6 +39,7 @@ cd docker
 ```
 
 **What happens here:**
+
 - Builds a PostgreSQL Docker container
 - Loads sample stocks data (26,566 records)
 - Database runs on port 5433 (to avoid conflicts)
@@ -62,6 +63,7 @@ jupyter lab notebooks/vanna-ai-demo.ipynb
 4. **Try sample questions** like "What is the average price of GOOGL stock?"
 
 **That's it!** The notebook has everything configured:
+
 - ✅ API keys built-in
 - ✅ Database settings ready
 - ✅ No environment variables needed
@@ -70,18 +72,25 @@ jupyter lab notebooks/vanna-ai-demo.ipynb
 ## 📊 What You'll Get
 
 ### Sample Data
+
 - **Stocks Dataset**: 26,566 historical stock records with OHLCV data
 - **Movies Dataset**: 4,808 movie records with ratings and metadata (optional)
 
 ### Features
+
 - **AI SQL Generation**: Ask questions in natural language
 - **Web Interface**: Interactive Flask app at http://localhost:8084
 - **Real-time Training**: AI learns from your database schema
 - **Multiple Datasets**: Switch between stocks and movies data
 
+<!-- Add demo screenshots here -->
+<!-- ![Demo Screenshot](img/demo-screenshot.png) -->
+<!-- ![Web Interface](img/web-interface.png) -->
+
 ## 🎯 Example Questions to Try
 
 ### Stocks Dataset (Default)
+
 - "What's the average price of GOOGL?"
 - "Show me the highest volume trading days"
 - "Which stocks had the biggest price swings?"
@@ -89,12 +98,15 @@ jupyter lab notebooks/vanna-ai-demo.ipynb
 - "Find stocks with volume above 10 million"
 
 ### Movies Dataset
+
 To switch to movies data:
+
 ```bash
 python3 switch_dataset.py movies
 ```
 
 Then try:
+
 - "What are the top 10 highest rated movies?"
 - "Show me movies released in 2020"
 - "Which movies have the highest vote count?"
@@ -126,34 +138,6 @@ After running the notebook, you can also use the web interface:
 3. **Ask questions** in the web interface
 4. **View generated SQL** and results
 
-## 🔧 Troubleshooting
-
-### Common Issues
-
-1. **Port 5433 already in use**
-   ```bash
-   # Stop any existing PostgreSQL containers
-   docker stop $(docker ps -q --filter ancestor=postgres)
-   ```
-
-2. **Module not found errors**
-   ```bash
-   # Reinstall dependencies
-   pip install -r requirements.txt
-   ```
-
-3. **Database connection failed**
-   ```bash
-   # Check if Docker is running
-   docker ps
-   
-   # Restart the database
-   cd docker && ./run.sh
-   ```
-
-4. **ChromaDB telemetry warnings**
-   - These are harmless and don't affect functionality
-   - They're automatically suppressed in the notebook
 
 ### Getting Help
 
@@ -173,11 +157,13 @@ vanna-ai-demo/
 │   └── *.sh                   # Setup scripts
 ├── data/                       # Sample datasets
 ├── docs/                       # Documentation
+├── img/                        # Images and media for README
 ├── README.md                   # This file
 ├── QUICKSTART.md              # Quick start guide
 ├── requirements.txt           # Python dependencies
 └── switch_dataset.py          # Dataset switcher
 ```
+
 
 ## 🎮 How It Works
 
