@@ -58,6 +58,10 @@ jupyter notebook notebooks/vanna-ai-demo.ipynb
 jupyter lab notebooks/vanna-ai-demo.ipynb
 ```
 
+- Or open the notebook directly in your IDE:
+  - Cursor / VS Code: Open the project folder, then open `notebooks/vanna-ai-demo.ipynb`
+  - Click "Run All" or run cells with Shift+Enter
+
 #### 4. Run the Notebook
 
 1. **Open the notebook** in your browser
