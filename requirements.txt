@@ -1,0 +1,21 @@
+# Vanna AI Demo Project Requirements
+# Core Vanna AI with PostgreSQL, Gemini, and ChromaDB support
+vanna[chromadb,gemini,postgres]==0.7.9
+
+# Additional dependencies for Google Gemini
+google-cloud-aiplatform>=1.121.0
+
+# Jupyter notebook support
+jupyter>=1.0.0
+ipykernel>=6.0.0
+
+# Data analysis and visualization
+pandas>=2.0.0
+plotly>=6.0.0
+
+# Environment and configuration
+python-dotenv>=1.0.0
+
+# Optional: For enhanced development
+black>=23.0.0
+flake8>=6.0.0
