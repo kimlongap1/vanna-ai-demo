@@ -139,6 +139,44 @@ After running the notebook, you can also use the web interface:
 4. **View generated SQL** and results
 
 
+## 🔧 Troubleshooting
+
+### Common Issues
+
+1. **ChromaDB OperationalError**
+   ```
+   OperationalError: Failed to connect to ChromaDB server
+   ```
+   **Solution**: The notebook is now configured to use a local ChromaDB instance. If you still get this error:
+   - Restart the Jupyter kernel
+   - Run the cells in order again
+   - The ChromaDB data will be stored in `./chromadb_data/`
+
+2. **Port 5433 already in use**
+   ```bash
+   # Stop any existing PostgreSQL containers
+   docker stop $(docker ps -q --filter ancestor=postgres)
+   ```
+
+3. **Module not found errors**
+   ```bash
+   # Reinstall dependencies
+   pip install -r requirements.txt
+   ```
+
+4. **Database connection failed**
+   ```bash
+   # Check if Docker is running
+   docker ps
+   
+   # Restart the database
+   cd docker && ./run.sh
+   ```
+
+5. **ChromaDB telemetry warnings**
+   - These are harmless and don't affect functionality
+   - They're automatically suppressed in the notebook
+
 ### Getting Help
 
 - Check the [Vanna AI Documentation](https://vanna.ai/docs/)
