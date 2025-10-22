@@ -41,6 +41,11 @@ A comprehensive demonstration of [Vanna AI](https://vanna.ai/) - an AI-powered S
    cd docker
    ./run.sh
    ```
+   
+   **Note**: By default, the project loads the **stocks** dataset. To switch to movies:
+   ```bash
+   python3 switch_dataset.py movies
+   ```
 
 ## 🎯 Quick Start
 
@@ -61,12 +66,30 @@ A comprehensive demonstration of [Vanna AI](https://vanna.ai/) - an AI-powered S
 
 ## 📊 Sample Data
 
+The project includes two datasets that you can switch between:
+
 ### Movies Dataset
 - **Movies**: 4,808 movie records with ratings, genres, and metadata
 - **Credits**: 4,805 credit records with cast and crew information
 
-### Stocks Dataset
-- **Stocks**: Historical stock data with OHLCV (Open, High, Low, Close, Volume)
+### Stocks Dataset  
+- **Stocks**: 26,566 historical stock records with OHLCV (Open, High, Low, Close, Volume)
+
+### Dataset Switching
+You can easily switch between datasets using the provided script:
+
+```bash
+# Switch to movies dataset
+python3 switch_dataset.py movies
+
+# Switch to stocks dataset  
+python3 switch_dataset.py stocks
+
+# Check current status
+python3 switch_dataset.py status
+```
+
+**Note**: Switching datasets will rebuild the Docker container with the new data.
 
 ## 🔧 Configuration
 
