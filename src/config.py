@@ -8,7 +8,10 @@ import os
 from dotenv import load_dotenv
 
 # Load environment variables from .env file
-load_dotenv()
+# Look for .env file in the project root (parent directory of src/)
+project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+env_path = os.path.join(project_root, '.env')
+load_dotenv(env_path)
 
 class Config:
     """Configuration class for Vanna AI Demo"""
