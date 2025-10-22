@@ -44,6 +44,10 @@ class Config:
     @classmethod
     def validate_config(cls):
         """Validate that required configuration is present"""
+        # Debug: Print what we actually have
+        print(f"DEBUG: GEMINI_API_KEY = '{cls.GEMINI_API_KEY}'")
+        print(f"DEBUG: Length = {len(cls.GEMINI_API_KEY)}")
+        
         if cls.GEMINI_API_KEY == 'your_gemini_api_key_here':
             raise ValueError("Please set your GEMINI_API_KEY in the .env file")
         return True
