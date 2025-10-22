@@ -25,7 +25,7 @@ git clone https://github.com/kimlongap1/vanna-ai-demo.git
 cd vanna-ai-demo
 
 # Install Python dependencies
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 ```
 
 #### 2. Start PostgreSQL Database
@@ -188,7 +188,7 @@ After running the notebook, you can also use the web interface:
 
    ```bash
    # Reinstall dependencies
-   pip install -r requirements.txt
+   pip3 install -r requirements.txt
    ```
 5. **Database connection failed**
 
