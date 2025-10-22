@@ -187,6 +187,120 @@ vanna-ai-demo/
 4. **Query Generation**: Converts natural language to SQL
 5. **Execution**: Runs queries and returns results
 
+## 🧠 Training Vanna AI
+
+Before you can ask questions, Vanna AI needs to be trained on your database. The notebook includes comprehensive training examples:
+
+### 1. Schema Training (Automatic)
+
+The notebook automatically trains on your database schema:
+
+```python
+# Get database schema information
+df_information_schema = vn.run_sql("SELECT table_name, column_name, data_type FROM information_schema.columns WHERE table_schema = 'public'")
+
+# Generate training plan
+plan = vn.get_training_plan_generic(df_information_schema)
+
+# Train on the schema
+vn.train(plan=plan)
+```
+
+### 2. DDL Training (Table Structure)
+
+Teach Vanna about your table structure:
+
+```python
+# DDL statements are powerful because they specify table names, column names, types, and relationships
+vn.train(ddl="""
+CREATE TABLE stocks (
+    date TIMESTAMPTZ NULL,
+    symbol TEXT NULL,
+    open DOUBLE PRECISION NULL,
+    high DOUBLE PRECISION NULL,
+    low DOUBLE PRECISION NULL,
+    close DOUBLE PRECISION NULL,
+    adj_close DOUBLE PRECISION NULL,
+    volume BIGINT NULL
+)
+""")
+```
+
+### 3. Documentation Training (Business Context)
+
+Provide business context and domain knowledge:
+
+```python
+# Documentation Training
+vn.train(documentation="""
+Stock market data includes daily trading information with opening, high, low, and closing prices.
+Volume represents the number of shares traded. Adjusted close accounts for stock splits and dividends.
+Daily range is calculated as high minus low. Price movement is close minus open.
+""")
+```
+
+### 4. SQL Examples Training
+
+Show Vanna example queries for common patterns:
+
+```python
+# SQL Training Examples
+vn.train(sql="SELECT symbol, date, close FROM stocks WHERE symbol = 'AAPL' ORDER BY date DESC LIMIT 10")
+vn.train(sql="SELECT symbol, AVG(close) as avg_price FROM stocks GROUP BY symbol ORDER BY avg_price DESC")
+```
+
+### 5. Training for Movies Dataset
+
+If you switch to movies dataset, use these examples:
+
+```python
+# Movies DDL Training
+vn.train(ddl="""
+CREATE TABLE movies (
+    id INTEGER,
+    title TEXT,
+    vote_average DOUBLE PRECISION,
+    vote_count INTEGER,
+    release_date DATE,
+    genre_ids TEXT
+)
+""")
+
+# Movies Documentation
+vn.train(documentation="""
+Movies table contains film data with ratings, genres, and release dates.
+Vote average is the average rating (0-10 scale). Vote count is number of ratings.
+Genre IDs represent movie categories like action, comedy, drama.
+""")
+
+# Movies SQL Examples
+vn.train(sql="SELECT title, vote_average FROM movies WHERE vote_average > 8.0 ORDER BY vote_average DESC")
+vn.train(sql="SELECT COUNT(*) as movie_count FROM movies WHERE release_date >= '2020-01-01'")
+```
+
+### Training Tips
+
+- **Run training once**: Don't retrain unless you add new data
+- **Use descriptive documentation**: Explain business context and relationships
+- **Provide diverse examples**: Include different query patterns
+- **Test after training**: Ask sample questions to verify training worked
+
+### Verify Training Worked
+
+After training, test with these questions:
+
+```python
+# Test questions to verify training
+question = "What is the average price of GOOGL stock?"
+sql = vn.generate_sql(question=question)
+print(f"Question: {question}")
+print(f"Generated SQL: {sql}")
+
+# Execute and see results
+df = vn.run_sql(sql=sql)
+print(df)
+```
+
 ## 🤝 Contributing
 
 1. Fork the repository
