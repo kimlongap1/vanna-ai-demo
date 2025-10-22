@@ -32,9 +32,11 @@ A comprehensive demonstration of [Vanna AI](https://vanna.ai/) - an AI-powered S
 
 3. **Set up environment variables**:
    ```bash
-   cp .env.example .env
+   cp env.example .env
    # Edit .env and add your Google Gemini API key
    ```
+   
+   **Note**: The project now uses environment variables instead of hardcoded values. All configuration is managed through the `.env` file.
 
 4. **Start PostgreSQL with sample data**:
    ```bash
@@ -46,6 +48,13 @@ A comprehensive demonstration of [Vanna AI](https://vanna.ai/) - an AI-powered S
    ```bash
    python3 switch_dataset.py movies
    ```
+
+5. **Test your setup**:
+   ```bash
+   python3 test_config.py
+   ```
+   
+   This will verify that all environment variables are loaded correctly and the database connection works.
 
 ## 🎯 Quick Start
 
