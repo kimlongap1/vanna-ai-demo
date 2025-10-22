@@ -23,11 +23,6 @@ jupyter notebook notebooks/vanna-ai-demo.ipynb
 - ✅ No environment variables needed
 - ✅ Just open and run!
 
-**Alternative: Use the Python script** for automated testing:
-```bash
-python3 vanna_demo_simple.py
-```
-
 ## 🚀 Features
 
 - **AI-Powered SQL Generation**: Generate SQL queries from natural language using Google Gemini
