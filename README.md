@@ -2,7 +2,6 @@
 
 A simple demonstration of [Vanna AI](https://vanna.ai/) - AI-powered SQL generation using Google Gemini, PostgreSQL, and ChromaDB.
 
-
 ![](assets/20251022_145000_how-vanna-works.gif)
 
 ## 🚀 Quick Start
@@ -60,14 +59,15 @@ jupyter lab notebooks/vanna-ai-demo.ipynb
 
 - Or open the notebook directly in your IDE:
   - Cursor / VS Code: Open the project folder, then open `notebooks/vanna-ai-demo.ipynb`
+  - Change API Key use your own
+
+    ![](assets/20251022_145919_data-03.png)
   - Click "Run All" or run cells with Shift+Enter
+  - Open http://localhost:8084
+  - **Try sample questions** like "hat is the average closing price for each stock, ordered from highest to lowest"
 
-#### 4. Run the Notebook
 
-1. **Open the notebook** in your browser
-2. **Run all cells** in order (Shift+Enter)
-3. **Wait for training** - the AI will learn your database schema
-4. **Try sample questions** like "What is the average price of GOOGL stock?"
+    ![](assets/20251022_150317_data-04.png)
 
 **That's it!** The notebook has everything configured:
 
@@ -89,12 +89,6 @@ jupyter lab notebooks/vanna-ai-demo.ipynb
 - **Web Interface**: Interactive Flask app at http://localhost:8084
 - **Real-time Training**: AI learns from your database schema
 - **Multiple Datasets**: Switch between stocks and movies data
-
-<!-- Add demo screenshots here -->
-
-<!-- ![Demo Screenshot](img/demo-screenshot.png) -->
-
-<!-- ![Web Interface](img/web-interface.png) -->
 
 ## 🎯 Example Questions to Try
 
