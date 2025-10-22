@@ -84,7 +84,9 @@ jupyter lab notebooks/vanna-ai-demo.ipynb
 - **Multiple Datasets**: Switch between stocks and movies data
 
 <!-- Add demo screenshots here -->
+
 <!-- ![Demo Screenshot](img/demo-screenshot.png) -->
+
 <!-- ![Web Interface](img/web-interface.png) -->
 
 ## 🎯 Example Questions to Try
@@ -96,6 +98,8 @@ jupyter lab notebooks/vanna-ai-demo.ipynb
 - "Which stocks had the biggest price swings?"
 - "What was AAPL's highest closing price?"
 - "Find stocks with volume above 10 million"
+
+  ![](assets/20251022_134859_data-01.png)
 
 ### Movies Dataset
 
@@ -138,57 +142,62 @@ After running the notebook, you can also use the web interface:
 3. **Ask questions** in the web interface
 4. **View generated SQL** and results
 
-
 ## 🔧 Troubleshooting
 
 ### Common Issues
 
 1. **ChromaDB OperationalError**
+
    ```
    OperationalError: Failed to connect to ChromaDB server
    ```
+
    **Solution**: The notebook is now configured to use a local ChromaDB instance. If you still get this error:
+
    - Restart the Jupyter kernel
    - Run the cells in order again
    - The ChromaDB data will be stored in `./chromadb_data/`
-
 2. **ResourceExhausted Error**
+
    ```
    ResourceExhausted: API quota exceeded or rate limit reached
    ```
+
    **Solution**: This happens when hitting Gemini API limits. The notebook now includes:
+
    - Error handling for training steps
    - Rate limiting between API calls
    - Helpful error messages
-   
+
    **If you still get this error:**
+
    - Wait a few minutes and try again
    - Check your Google AI Studio quota
    - Consider using a different API key
    - Reduce the number of training examples
-
 3. **Port 5433 already in use**
+
    ```bash
    # Stop any existing PostgreSQL containers
    docker stop $(docker ps -q --filter ancestor=postgres)
    ```
+4. **Module not found errors**
 
-3. **Module not found errors**
    ```bash
    # Reinstall dependencies
    pip install -r requirements.txt
    ```
+5. **Database connection failed**
 
-4. **Database connection failed**
    ```bash
    # Check if Docker is running
    docker ps
-   
+
    # Restart the database
    cd docker && ./run.sh
    ```
+6. **ChromaDB telemetry warnings**
 
-5. **ChromaDB telemetry warnings**
    - These are harmless and don't affect functionality
    - They're automatically suppressed in the notebook
 
@@ -217,24 +226,30 @@ vanna-ai-demo/
 └── switch_dataset.py          # Dataset switcher
 ```
 
-
 ## 🛠️ Tech Stack
 
 This demo showcases a specific tech stack, but Vanna AI supports many alternatives:
 
 ### Current Implementation
 
-| Component | Technology | Purpose |
-|-----------|------------|---------|
-| **LLM** | Google Gemini Pro | AI-powered SQL generation |
-| **Database** | PostgreSQL | Sample data storage and query execution |
-| **Vector Store** | ChromaDB | Training data storage and retrieval |
-| **Web Interface** | Flask | Interactive demo interface |
-| **Containerization** | Docker | Easy database setup |
+
+| Component            | Technology        | Purpose                                 |
+| ---------------------- | ------------------- | ----------------------------------------- |
+| **LLM**              | Google Gemini Pro | AI-powered SQL generation               |
+| **Database**         | PostgreSQL        | Sample data storage and query execution |
+| **Vector Store**     | ChromaDB          | Training data storage and retrieval     |
+| **Web Interface**    | Flask             | Interactive demo interface              |
+| **Containerization** | Docker            | Easy database setup                     |
+
+
+
+
+![](assets/20251022_142000_data-02.png)
 
 ### Vanna AI Flexibility
 
 **🤖 Supported LLMs:**
+
 - Google Gemini (used in this demo)
 - OpenAI GPT-3.5/4
 - Anthropic Claude
@@ -244,6 +259,7 @@ This demo showcases a specific tech stack, but Vanna AI supports many alternativ
 - And many more...
 
 **🗄️ Supported Databases:**
+
 - PostgreSQL (used in this demo)
 - MySQL
 - SQL Server
@@ -254,6 +270,7 @@ This demo showcases a specific tech stack, but Vanna AI supports many alternativ
 - And many more...
 
 **📊 Supported Vector Stores:**
+
 - ChromaDB (used in this demo)
 - Pinecone
 - Weaviate
@@ -296,6 +313,12 @@ vn = Pinecone_VectorStore(api_key="your-pinecone-key")
 6. **Vector Storage**: Stores training data in ChromaDB for future reference
 
 ## 🧠 Training Vanna AI
+
+The promise of having an autonomous AI agent that can answer business users’ plain English questions is an attractive but thus far elusive proposition. Many have tried, with limited success, to get LLM to write. The failure is primarily due of a lack of the LLM's knowledge of the particular dataset it’s being asked to query.
+
+In this paper, **we show that context is everything, and with the right context, we can get from ~3% accuracy to ~80% accuracy**.
+
+![](https://raw.githubusercontent.com/vanna-ai/vanna/main/papers/img/summary.png)
 
 Before you can ask questions, Vanna AI needs to be trained on your database. The notebook includes comprehensive training examples:
 
